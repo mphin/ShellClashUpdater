@@ -41,11 +41,67 @@ jobs:
           if [ ! -f "$file" ]; then
             echo "错误: $file 下载失败."
           else
-            unzip -o "$file" > /dev/null
-            rm -rf "$file"
+            echo 解压缩
+            if [ "$file" = "clashdb.zip" ]; then
+                unzip -o clashdb.zip > /dev/null
+            fi
+            if [ "$file" = "yacd.zip" ]; then
+                unzip -o yacd.zip > /dev/null
+            fi
+            cd clash-dashboard-gh-pages
+            tar -zcvf clashdb.tar.gz * > /dev/null
+            mv -f clashdb.tar.gz ../
+            cd ..
+            cd yacd-gh-pages
+            echo yacd特殊处理
+            find -name '*.map' | xargs  rm -rf
+            rm -rf report.html
+            tar -zcvf yacd.tar.gz * > /dev/null
+            mv -f yacd.tar.gz ../
+            cd ..
+
+            echo 解压缩meta
+            if [ "$file" = "meta_db.zip" ]; then
+                unzip -o meta_db.zip > /dev/null
+            fi
+            if [ "$file" = "meta_yacd.zip" ]; then
+                unzip -o meta_yacd.zip > /dev/null
+            fi
+            cd Razord-meta-gh-pages
+            tar -zcvf meta_db.tar.gz * > /dev/null
+            mv -f meta_db.tar.gz ../
+            cd ..
+            cd Yacd-meta-gh-pages
+            echo yacd特殊处理
+            find -name '*.map' | xargs  rm -rf
+            rm -rf report.html
+            tar -zcvf meta_yacd.tar.gz * > /dev/null
+            mv -f meta_yacd.tar.gz ../
+            cd ..
+
+            echo 解压缩meta-xd
+            if [ "$file" = "meta_xd.zip" ]; then
+                unzip -o meta_xd.zip > /dev/null
+            fi
+            cd metacubexd-gh-pages
+            echo 删除字体文件
+            find -name '*.ttf' | xargs  rm -rf
+            tar -zcvf meta_xd.tar.gz * > /dev/null
+            mv -f meta_xd.tar.gz ../
           fi
         done
-
+        
+        cd ..       
+        rm -rf clashdb.zip
+        rm -rf yacd.zip
+        rm -rf meta_db.zip
+        rm -rf meta_yacd.zip
+        rm -rf meta_xd.zip
+        rm -rf clash-dashboard-gh-pages
+        rm -rf yacd-gh-pages
+        rm -rf Razord-meta-gh-pages
+        rm -rf Yacd-meta-gh-pages
+        rm -rf metacubexd-gh-pages
         echo 面板更新完成！
 
     - name: Update GeoIP
