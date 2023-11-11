@@ -38,40 +38,40 @@ jobs:
         echo 解压缩
         unzip -o clashdb.zip > /dev/null || true
         unzip -o yacd.zip > /dev/null || true
-        cd clash-dashboard-gh-pages
+        cd clash-dashboard-gh-pages  || true
         tar -zcvf clashdb.tar.gz * > /dev/null || true
-        mv -f clashdb.tar.gz ../
+        mv -f clashdb.tar.gz ../  || true
         cd ..
-        cd yacd-gh-pages
+        cd yacd-gh-pages  || true
         echo yacd特殊处理
         find -name '*.map' | xargs  rm -rf || true
         rm -rf report.html || true
         tar -zcvf yacd.tar.gz * > /dev/null || true
-        mv -f yacd.tar.gz ../
+        mv -f yacd.tar.gz ../  || true
         cd ..
         
         echo 解压缩meta
         unzip -o meta_db.zip > /dev/null || true
         unzip -o meta_yacd.zip > /dev/null || true
-        cd Razord-meta-gh-pages
+        cd Razord-meta-gh-pages  || true
         tar -zcvf meta_db.tar.gz * > /dev/null || true
-        mv -f meta_db.tar.gz ../
+        mv -f meta_db.tar.gz ../  || true
         cd ..
-        cd Yacd-meta-gh-pages
+        cd Yacd-meta-gh-pages  || true
         echo yacd特殊处理
         find -name '*.map' | xargs  rm -rf || true
-        rm -rf report.html || true
+        rm -rf report.html || true  || true
         tar -zcvf meta_yacd.tar.gz * > /dev/null || true
-        mv -f meta_yacd.tar.gz ../
+        mv -f meta_yacd.tar.gz ../  || true
         cd ..
         
         echo 解压缩meta-xd
         unzip -o meta_xd.zip > /dev/null || true
-        cd metacubexd-gh-pages
+        cd metacubexd-gh-pages  || true
         echo 删除字体文件
         find -name '*.ttf' | xargs  rm -rf || true
         tar -zcvf meta_xd.tar.gz * > /dev/null || true
-        mv -f meta_xd.tar.gz ../
+        mv -f meta_xd.tar.gz ../  || true
         
         cd ..       
         rm -rf clashdb.zip
