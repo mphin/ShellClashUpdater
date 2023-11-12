@@ -53,7 +53,7 @@ jobs:
           mv -f clashdb.tar.gz ../
           cd ..
         else
-          echo "错误：无法下载或找到 clashdb.zip"
+          echo 无法下载或找到clashdb.zip
         fi
         if [ -e yacd.zip ]; then
           unzip -o yacd.zip > /dev/null
@@ -65,7 +65,7 @@ jobs:
           mv -f yacd.tar.gz ../
           cd ..
         else
-          echo "错误：无法下载或找到 yacd.zip"
+          echo 无法下载或找到yacd.zip
         fi
         
         echo 解压缩meta
@@ -76,7 +76,7 @@ jobs:
           mv -f meta_db.tar.gz ../
           cd ..
         else
-          echo "错误：无法下载或找到 meta_db.zip"
+          echo 无法下载或找到meta_db.zip
         fi
         if [ -e meta_yacd.zip ]; then
           unzip -o meta_yacd.zip > /dev/null
@@ -88,11 +88,9 @@ jobs:
           mv -f meta_yacd.tar.gz ../
           cd ..
         else
-          echo "错误：无法下载或找到 meta_yacd.zip"
+          echo 无法下载或找到meta_yacd.zip
         fi
-        
-        
-        
+
         echo 解压缩meta-xd
         if [ -e meta_xd.zip ]; then
           unzip -o meta_xd.zip > /dev/null
@@ -103,7 +101,7 @@ jobs:
           mv -f meta_xd.tar.gz ../
           cd ..
         else
-          echo "错误：无法下载或找到 meta_xd.zip"
+          echo 无法下载或找到meta_xd.zip
         fi
                
         rm -rf clashdb.zip
@@ -120,6 +118,7 @@ jobs:
         
     - name: Update GeoIP
       run: |
+        mkdir -p bin/fix
         cd bin
         source version
         curl -kfSL -o geodata/Country.mmdb https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb || true
