@@ -46,44 +46,63 @@ jobs:
         echo 下载meta-xd面板
         curl -kfSL -o meta_xd.zip  https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip || true
         echo 解压缩
-        unzip -o clashdb.zip > /dev/null || true
-        unzip -o yacd.zip > /dev/null || true
-        cd clash-dashboard-gh-pages || true
-        tar -zcvf clashdb.tar.gz * > /dev/null || true
-        mv -f clashdb.tar.gz ../ || true
-        cd ..
-        cd yacd-gh-pages || true
-        echo yacd特殊处理
-        find -name '*.map' | xargs  rm -rf || true
-        rm -rf report.html || true
-        tar -zcvf yacd.tar.gz * > /dev/null || true
-        mv -f yacd.tar.gz ../ || true
-        cd ..
+        if [ -e clashdb.zip ]; then
+          unzip -o clashdb.zip > /dev/null
+          cd clash-dashboard-gh-pages
+          tar -zcvf clashdb.tar.gz * > /dev/null
+          mv -f clashdb.tar.gz ../
+          cd ..
+        else
+          echo "错误：无法下载或找到 clashdb.zip"
+        fi
+        if [ -e yacd.zip ]; then
+          unzip -o yacd.zip > /dev/null
+          cd yacd-gh-pages
+          echo yacd特殊处理
+          find -name '*.map' | xargs  rm -rf
+          rm -rf report.html
+          tar -zcvf yacd.tar.gz * > /dev/null
+          mv -f yacd.tar.gz ../
+          cd ..
+        else
+          echo "错误：无法下载或找到 yacd.zip"
+        fi
         
         echo 解压缩meta
-        unzip -o meta_db.zip > /dev/null || true
-        unzip -o meta_yacd.zip > /dev/null || true
-        cd Razord-meta-gh-pages || true
-        tar -zcvf meta_db.tar.gz * > /dev/null || true
-        mv -f meta_db.tar.gz ../ || true
-        cd ..
-        cd Yacd-meta-gh-pages || true
-        echo yacd特殊处理
-        find -name '*.map' | xargs  rm -rf || true
-        rm -rf report.html || true
-        tar -zcvf meta_yacd.tar.gz * > /dev/null || true
-        mv -f meta_yacd.tar.gz ../ || true
-        cd ..
+        if [ -e meta_db.zip ]; then
+          unzip -o meta_db.zip > /dev/null
+          cd Razord-meta-gh-pages
+          tar -zcvf meta_db.tar.gz * > /dev/null
+          mv -f meta_db.tar.gz ../
+          cd ..
+        else
+          echo "错误：无法下载或找到 meta_db.zip"
+        if [ -e meta_yacd.zip ]; then
+          unzip -o meta_yacd.zip > /dev/null
+          cd Yacd-meta-gh-pages
+          echo yacd特殊处理
+          find -name '*.map' | xargs  rm -rf
+          rm -rf report.html
+          tar -zcvf meta_yacd.tar.gz * > /dev/null
+          mv -f meta_yacd.tar.gz ../
+          cd ..
+        else
+          echo "错误：无法下载或找到 meta_yacd.zip"
+        
+        
         
         echo 解压缩meta-xd
-        unzip -o meta_xd.zip > /dev/null || true
-        cd metacubexd-gh-pages || true
-        echo 删除字体文件
-        find -name '*.ttf' | xargs  rm -rf || true
-        tar -zcvf meta_xd.tar.gz * > /dev/null || true
-        mv -f meta_xd.tar.gz ../ || true
-        
-        cd ..       
+        if [ -e meta_xd.zip ]; then
+          unzip -o meta_xd.zip > /dev/null
+          cd metacubexd-gh-pages
+          echo 删除字体文件
+          find -name '*.ttf' | xargs  rm -rf
+          tar -zcvf meta_xd.tar.gz * > /dev/null
+          mv -f meta_xd.tar.gz ../
+          cd ..
+        else
+          echo "错误：无法下载或找到 meta_xd.zip"
+               
         rm -rf clashdb.zip
         rm -rf yacd.zip
         rm -rf meta_db.zip
