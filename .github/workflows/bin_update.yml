@@ -19,7 +19,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
+    - name: Set up time zone
+      run: sudo timedatectl set-timezone Asia/Shanghai
+
     - name: Checkout
       uses: actions/checkout@master
  
@@ -133,7 +135,7 @@ jobs:
     - name: Commit and push
       run: |
         git config --global user.email "long632450362@qq.com" && git config --global user.name "Bot"
-        git add . && git commit -m "自动更新最新Dashboard、地址库、根证书" || exit 0
+        git add . && git commit -m "自动更新$(date +'%Y-%m-%d %H:%M')" || exit 0
         git push
         
     - name: Cleanup Workflow
