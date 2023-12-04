@@ -9,7 +9,7 @@ on:
 #   branches: 
 #       - master
     schedule:
-        - cron: 0 20 * * *
+        - cron: 0 18 * * *
 #   watch:
 #       types: [started]
     workflow_dispatch:
@@ -130,6 +130,7 @@ jobs:
         curl -kfSL -o geodata/geosite.dat https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat || true
         curl -kfSL -o fix/ca-certificates.crt https://raw.githubusercontent.com/P3TERX/ca-certificates.crt/download/ca-certificates.crt || true
         sed -i '/GeoIP_v*/'d version
+        
         echo GeoIP_v=`date '+%Y%m%d'` >> version
         echo 数据库及根证书文件更新完成！
     - name: Commit and push
