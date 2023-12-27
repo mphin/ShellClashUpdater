@@ -135,7 +135,7 @@ jobs:
         echo 数据库及根证书文件更新完成！
     - name: Commit and push
       run: |
-        git config --global user.email "long632450362@qq.com" && git config --global user.name "Bot"
+        git config --global user.email "mphin@qq.com" && git config --global user.name "Bot"
         git add . && git commit -m "自动更新$(date +'%Y-%m-%d %H:%M')" || exit 0
         git push
         
