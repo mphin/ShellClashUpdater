@@ -1,4 +1,4 @@
-name: Auto Update Meta Core
+name: Update Meta Core
 
 on: 
     schedule:
@@ -41,7 +41,7 @@ jobs:
           fi
         done
         rm -fr upx*
-    - name: Update
+    - name: 更新
       run: |
         mkdir -p bin/clash.meta
         rm -fr ./bin/clash.meta/*
