@@ -6,7 +6,6 @@ on:
     workflow_dispatch:
 
 env:
-  download_tag: $(curl -sL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.tag_name')
   download_version: ''
   download_url: https://github.com/MetaCubeX/mihomo/releases/download
 
@@ -24,7 +23,7 @@ jobs:
         tar xf upx-3.93-amd64_linux.tar.xz
     - name: Download Core
       run: |
-        echo ${download_tag}
+        download_tag=$(curl -sL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.tag_name')
         download_version=${download_tag}
         echo "download_version=${download_version}" >> ${GITHUB_ENV}
         archs=(amd64-compatible armv5 armv7 arm64 mips-softfloat mipsle-hardfloat mipsle-softfloat)
