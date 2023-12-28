@@ -2,7 +2,7 @@ name: Update Meta Core
 
 on: 
     schedule:
-        - cron: 0 18 3 * *
+        - cron: 30 3 * * 3
     workflow_dispatch:
 
 env:
