@@ -1,17 +1,8 @@
 name: bin_update
 
 on: 
-#   release:
-#       types: [published]
-#   push:
-#       tags:
-#       - 'v*'
-#   branches: 
-#       - master
     schedule:
         - cron: 0 18 * * *
-#   watch:
-#       types: [started]
     workflow_dispatch:
 
 jobs:
@@ -31,6 +22,16 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install unzip curl git tar
+
+    - name: Update ShellClash
+      run: |
+        cd bin
+        echo 下载ShellClash
+        curl -kfSL -o ShellClash.tar.gz  https://github.com/juewuy/ShellCrash/raw/master/bin/ShellClash.tar.gz || true
+        echo 下载管理脚本
+        curl -kfSL -o clashfm.tar.gz  https://github.com/juewuy/ShellCrash/raw/master/bin/clashfm.tar.gz || true
+        curl -kfSL -o public.tar.gz  https://github.com/juewuy/ShellCrash/raw/master/bin/public.tar.gz || true
+        cd ..
         
     - name: Update Dashboard
       run: |
