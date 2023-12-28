@@ -41,7 +41,7 @@ jobs:
           fi
         done
         rm -fr upx*
-    - name: 更新
+    - name: Update
       run: |
         mkdir -p bin/clash.meta
         rm -fr ./bin/clash.meta/*
