@@ -1,5 +1,7 @@
 ## 介绍
-每天自动更新最新Dashboard面板、GeoIP/CN-IP数据库、根证书
+* 同步更新 juewuy官方源 管理脚本
+* 每周自动更新最新Meta内核
+* 每天自动更新最新Dashboard面板、GeoIP/CN-IP数据库、根证书
 ## 更新地址
 * Github源
 ```
