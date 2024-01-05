@@ -31,6 +31,9 @@ jobs:
         echo 下载管理脚本
         curl -kfSL -o clashfm.tar.gz  https://github.com/juewuy/ShellCrash/raw/master/bin/clashfm.tar.gz || true
         curl -kfSL -o public.tar.gz  https://github.com/juewuy/ShellCrash/raw/master/bin/public.tar.gz || true
+        download_versionsh=$(curl -s https://raw.githubusercontent.com/juewuy/ShellCrash/master/bin/version | grep 'versionsh' | awk -F= '{print $2}')
+        sed -i '/versionsh*/'d version
+        echo versionsh=$download_versionsh >> version
         cd ..
         
     - name: Update Dashboard
